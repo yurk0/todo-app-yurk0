@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    h1.text-center List #{listDescription}
+    .panel.panel-default
+        for point in todoPoints
+            .panel-body
+                case point.result
+                    when 1
+                        del #{point.description}
+                        form(action='/points/destroy/#{point.point_id}/#{point.list_id}', method='post')
+                            input.btn.btn-danger.pull-right(type='submit', value='Delete')
+                        form(action='/points/undone/#{point.point_id}/#{point.list_id}', method='post')
+                            input.btn.btn-success.pull-right(type='submit', value='Undone')
+
+                    default
+                        a(href='/points/point/#{point.point_id}/#{point.list_id}') #{point.description}
+                        form(action='/points/destroy/#{point.point_id}/#{point.list_id}', method='post')
+                            input.btn.btn-danger.pull-right(type='submit', value='Delete')
+                        form(action='/points/done/#{point.point_id}/#{point.list_id}', method='post')
+                            input.btn.btn-success.pull-right(type='submit', value='Done')
+
+    form(method='post', action='/points/create/#{list_id}')
+        .input-group
+            input.form-control(type='text', placeholder='What do you have to do?', name='description')
+            span.input-group-btn
+                input.btn.btn-success(type='submit', value='Add Todo')
+
+    p
+    a(href='/').btn.btn-success.btn-lg View all ToDo list`s

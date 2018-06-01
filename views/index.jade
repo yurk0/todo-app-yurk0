@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  //h1= title
+  //p Welcome to #{title}
+
+  //
+  h2.text-center All list`s
+  .panel.panel-default
+    for todoList in todoLists
+      .panel-body
+        a(href='points/l/#{todoList.id}') #{todoList.description}
+        form(action='/lists/destroy/#{todoList.id}', method='post')
+          input.btn.btn-danger.pull-right(type='submit', value='Delete')
+  form(method='post', action='/lists/create')
+    .input-group
+      input.form-control(type='text', placeholder='Enter new ToDo List name?', name='description')
+      span.input-group-btn
+        input.btn.btn-success(type='submit', value='Add Todo')

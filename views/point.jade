@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    form(method='post', action='/points/edit/#{point.point_id}/#{point.list_id}')
+        h1
+            input(value='#{point.description}', name='description')
+            input(type='submit', value='Update').btn.btn-primary.btn-lg
+            a(href='/points/l/#{point.list_id}').btn.btn-default.btn-lg Back
