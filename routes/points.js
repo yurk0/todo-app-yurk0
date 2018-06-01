@@ -3,9 +3,6 @@ var Point = require('../models').points;
 var List = require('../models').lists;
 var router = express.Router();
 
-router.get('/', function(req, res){
-    res.redirect('/lists');
-});
 
 router.get('/l/:id', function(req, res){
     var listName = '';

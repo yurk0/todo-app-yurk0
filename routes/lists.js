@@ -11,6 +11,8 @@ router.get('/', function(req, res){
      });
  });
 
+
+
 router.get('/:id', function(req, res){
     List.findById(req.params.id).then(list => {
         res.status(200).json(list);
@@ -22,7 +24,7 @@ router.post('/create', function(req, res){
         description: req.body.description,
         deleted: 0
     }).then(list => {
-        res.redirect('/lists');
+        res.redirect('/');
     }).error(err => {
         res.status(405).json('Error has occured');
     });
@@ -37,7 +39,7 @@ router.post('/destroy/:id', function(req, res){
     },{
         where: { id: req.params.id }
     }).then(result => {
-        res.redirect('/lists');
+        res.redirect('/');
     });
 });
 

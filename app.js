@@ -31,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', listRouter);
-app.use('/lists', listRouter);
 app.use('/points', pointRouter);
 
 // catch 404 and forward to error handler
